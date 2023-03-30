@@ -1,0 +1,55 @@
+{
+    "name": "@kimaris/icons",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "Simple icon library",
+    "author": "Klöen Lansfiel <kloen@kloenlansfiel.com>",
+    "license": "Unlicense",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kimarisgg/icons.git"
+    },
+    "files": [
+        "dist"
+    ],
+    "main": "./dist/kimaris-icons.umd.cjs",
+    "module": "./dist/kimaris-icons.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/kimaris-icons.js",
+            "require": "./dist/kimaris-icons.umd.cjs"
+        }
+    },
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "test": "jest",
+        "test:coverage": "jest --coverage",
+        "prepare": "husky install",
+        "lint": "eslint \"src/**/*.ts\"",
+        "lint:fix": "eslint \"src/**/*.ts\" --fix",
+        "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^17.5.1",
+        "@commitlint/config-conventional": "^17.4.4",
+        "@types/jest": "^29.5.0",
+        "@types/node": "^18.15.11",
+        "@typescript-eslint/eslint-plugin": "^5.57.0",
+        "@typescript-eslint/parser": "^5.57.0",
+        "eslint": "^8.37.0",
+        "eslint-config-prettier": "^8.8.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "husky": "^8.0.3",
+        "jest": "^29.5.0",
+        "jest-environment-jsdom": "^29.5.0",
+        "prettier": "2.8.7",
+        "semantic-release": "^21.0.0",
+        "ts-jest": "^29.0.5",
+        "typescript": "^5.0.2",
+        "vite": "^4.2.1",
+        "vite-plugin-dts": "^2.1.0"
+    }
+}
