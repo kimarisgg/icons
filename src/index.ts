@@ -1,1 +1,4 @@
-export { default as replace } from './replace'
+import replace from './replace'
+import icons from './icons';
+
+export default { icons, replace };
