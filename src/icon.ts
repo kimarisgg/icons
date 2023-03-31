@@ -1,9 +1,4 @@
-export interface IconData {
-    name: string
-    value: string
-}
-
-class Icon implements IconData {
+class Icon {
     name: string
     value: string
 
