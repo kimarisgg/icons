@@ -1,4 +1,4 @@
-import replace from './replace'
-import icons from './icons';
+import replace from "./replace"
+import icons from "./icons"
 
-export default { icons, replace };
+export default { icons, replace }

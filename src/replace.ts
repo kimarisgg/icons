@@ -10,11 +10,11 @@ function replace() {
 
 function replaceElement(element: Element) {
     const elementAttrs = element.attributes
-    const name = elementAttrs.getNamedItem("data-kimaris")!!
+    const name = elementAttrs.getNamedItem("data-kimaris") as Attr
     elementAttrs.removeNamedItem("data-kimaris")
     if (icons.has(name.value)) {
-        const svg = icons.get(name.value)!!.toSvg(elementAttrs)
-        element.replaceWith(svg)
+        const svg = icons.get(name.value)?.toSvg(elementAttrs)
+        if (svg) element.replaceWith(svg)
     }
 }
 
