@@ -1,8 +1,30 @@
 import fs from 'fs';
 import path from 'path';
+import svgo from "svgo"
+import prettier from "prettier"
 import { minify } from 'html-minifier';
 
-const getIcons = (dir) =>
+const svgoConfig = {
+    plugins: [
+        {
+            name: 'preset-default',
+            params: {
+                overrides: {
+                    convertShapeToPath: false,
+                    mergePaths: false,
+                },
+            },
+        },
+    ],
+};
+
+const prettierConfig = {
+    tabWidth: 2,
+    parser: "html",
+    sortAttributes: true
+}
+
+const processIcons = (dir) =>
     fs.readdirSync(dir).flatMap((subdir) => {
         const subdirPath = path.join(dir, subdir);
         if (fs.statSync(subdirPath).isDirectory()) {
@@ -12,7 +34,12 @@ const getIcons = (dir) =>
                 .map((file) => {
                     const filePath = path.join(subdirPath, file);
                     const content = fs.readFileSync(filePath, "utf8");
-                    const svgContent = content.match(/<svg[^>]*>([\s\S]*?)<\/svg>/i);
+
+                    const optimizedContent = svgo.optimize(content, svgoConfig).data
+                    const formattedContent = prettier.format(optimizedContent, prettierConfig)
+                    fs.writeFileSync(filePath, formattedContent)
+
+                    const svgContent = optimizedContent.match(/<svg[^>]*>([\s\S]*?)<\/svg>/i);
                     const value = svgContent ? svgContent[1] : "";
                     const minifiedValue = minify(value, {
                         collapseWhitespace: true,
@@ -28,6 +55,6 @@ const getIcons = (dir) =>
         return [];
     });
 
-const icons = getIcons("icons");
+const icons = processIcons("icons");
 const json = JSON.stringify(icons, null, 2);
 fs.writeFileSync("src/generated/icons.json", json);
