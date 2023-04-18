@@ -1,4 +1,4 @@
-import defaultAttributes from "./default"
+import defaultAttributes, { DefaultAttributes } from "./default"
 
 class Icon {
     name: string
@@ -22,14 +22,10 @@ class Icon {
     }
 
     setDefaultAttributes(element: Element) {
-        const defAttr = defaultAttributes.get(this.type)
-        if (defAttr !== undefined) {
-            Object.entries(defAttr).forEach(([key, value]) => {
-                if (value !== undefined) {
-                    element.setAttribute(key, value.toString())
-                }
-            })
-        }
+        const defAttr = defaultAttributes.get(this.type) as DefaultAttributes
+        Object.entries(defAttr).forEach(([key, value]) => {
+            element.setAttribute(key, value.toString())
+        })
     }
 }
 
