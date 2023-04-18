@@ -1,7 +1,7 @@
 import _brand from "./config/brand.default.json"
 import _common from "./config/common.default.json"
 
-interface DefaultAttributes {
+export interface DefaultAttributes {
     xmlns?: string
     width?: number
     height?: number
