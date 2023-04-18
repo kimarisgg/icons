@@ -15,8 +15,8 @@ class Icon {
         const svg = document.createElement("svg")
         svg.innerHTML = this.value
         this.setDefaultAttributes(svg)
-        for (let i = 0; i < attributes.length; i++) {
-            svg.setAttributeNode(attributes[i])
+        for (const attribute of attributes) {
+            svg.setAttribute(attribute.name, attribute.value);
         }
         return svg
     }
