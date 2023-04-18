@@ -1,17 +1,17 @@
 import replace from "../replace"
 
-jest.mock('../generated/icons.json', () => ([
+jest.mock("../generated/icons.json", () => [
     {
         name: "icon1",
         type: "common",
-        value: '<line x1="23" y1="1" x2="1" y2="23" /><line x1="1" y1="1" x2="23" y2="23" />',
+        value: '<line x1="23" y1="1" x2="1" y2="23" /><line x1="1" y1="1" x2="23" y2="23" />'
     },
     {
         name: "icon2",
         type: "common",
-        value: '<circle cx="12" cy="12" r="11" />',
+        value: '<circle cx="12" cy="12" r="11" />'
     }
-]));
+])
 
 test("replaces [data-kimaris] elements with SVG markup", () => {
     document.body.innerHTML = '<i data-kimaris="icon1"></i><span data-kimaris="icon2"></i>'

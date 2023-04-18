@@ -16,7 +16,7 @@ class Icon {
         svg.innerHTML = this.value
         this.setDefaultAttributes(svg)
         for (const attribute of attributes) {
-            svg.setAttribute(attribute.name, attribute.value);
+            svg.setAttribute(attribute.name, attribute.value)
         }
         return svg
     }
