@@ -43,6 +43,7 @@ const processIcons = (dir) =>
                     const value = svgContent ? svgContent[1] : ""
                     const minifiedValue = minify(value, {
                         collapseWhitespace: true,
+                        keepClosingSlash: true,
                         removeComments: true
                     })
                     return {
