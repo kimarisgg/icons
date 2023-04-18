@@ -12,8 +12,11 @@ class Icon {
     }
 
     toSvg(attributes: NamedNodeMap): HTMLElement {
-        const svg = document.createElement("svg")
-        svg.innerHTML = this.value
+        const parser = new DOMParser()
+        const svg = parser.parseFromString(
+            `<svg xmlns="http://www.w3.org/2000/svg">${this.value}</svg>`,
+            "image/svg+xml"
+        ).documentElement
         this.setDefaultAttributes(svg)
         for (const attribute of attributes) {
             svg.setAttribute(attribute.name, attribute.value)
