@@ -4,24 +4,39 @@ import svgo from "svgo"
 import prettier from "prettier"
 import { minify } from "html-minifier"
 
-const svgoConfig = {
-    plugins: [
-        {
-            name: "preset-default",
-            params: {
-                overrides: {
-                    convertShapeToPath: false,
-                    mergePaths: false
-                }
-            }
-        }
-    ]
-}
+import _brand from "../src/config/brand.default.json" assert { type: "json" }
+import _common from "../src/config/common.default.json" assert { type: "json" }
+
+const svgoConfigs = new Map()
 
 const prettierConfig = {
     tabWidth: 2,
     parser: "html",
     sortAttributes: true
+}
+
+const processDefaultAttributes = (attributes) => Object.entries(attributes).map(([key, value]) => ({ [key]: value }))
+
+const getSVGOConfig = (attributesToAdd) => {
+    return {
+        plugins: [
+            {
+                name: "preset-default",
+                params: {
+                    overrides: {
+                        convertShapeToPath: false,
+                        mergePaths: false
+                    }
+                }
+            },
+            {
+                name: "addAttributesToSVGElement",
+                params: {
+                    attributes: [...attributesToAdd, { xmlns: "http://www.w3.org/2000/svg" }]
+                }
+            }
+        ]
+    }
 }
 
 const processIcons = (dir) =>
@@ -35,7 +50,7 @@ const processIcons = (dir) =>
                     const filePath = path.join(subdirPath, file)
                     const content = fs.readFileSync(filePath, "utf8")
 
-                    const optimizedContent = svgo.optimize(content, svgoConfig).data
+                    const optimizedContent = svgo.optimize(content, svgoConfigs.get(subdir)).data
                     const formattedContent = prettier.format(optimizedContent, prettierConfig)
                     fs.writeFileSync(filePath, formattedContent)
 
@@ -55,6 +70,9 @@ const processIcons = (dir) =>
         }
         return []
     })
+
+svgoConfigs.set("brand", getSVGOConfig(processDefaultAttributes(_brand)))
+svgoConfigs.set("common", getSVGOConfig(processDefaultAttributes(_common)))
 
 const icons = processIcons("icons")
 const json = JSON.stringify(icons, null, 2)
