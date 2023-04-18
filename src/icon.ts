@@ -24,7 +24,7 @@ class Icon {
         return svg
     }
 
-    setDefaultAttributes(element: Element) {
+    private setDefaultAttributes(element: Element) {
         const defAttr = defaultAttributes.get(this.type) as DefaultAttributes
         Object.entries(defAttr).forEach(([key, value]) => {
             element.setAttribute(key, value.toString())
