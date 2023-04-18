@@ -22,8 +22,8 @@
         }
     },
     "scripts": {
-        "dev": "vite",
-        "build": "tsc && vite build",
+        "dev": "npm run build-icons && vite",
+        "build": "npm run build-icons && tsc && vite build",
         "build-icons": "node build/process-icons.js",
         "preview": "vite preview",
         "test": "jest",
