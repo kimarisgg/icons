@@ -34,6 +34,11 @@
         "lint:fix": "eslint \"src/**/*.ts\" --fix",
         "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
     },
+    "release": {
+        "branches": [
+            "main"
+        ]
+    },
     "devDependencies": {
         "@commitlint/cli": "^17.6.1",
         "@commitlint/config-conventional": "^17.6.1",
