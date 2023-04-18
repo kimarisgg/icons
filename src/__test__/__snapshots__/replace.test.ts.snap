@@ -2,8 +2,8 @@
 
 exports[`copies placeholder element attributes to <svg> tag 1`] = `"<i data-kimaris="icon1" id="test" class="foo bar" stroke-width="1"></i>"`;
 
-exports[`copies placeholder element attributes to <svg> tag 2`] = `"<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" id="test" class="foo bar"><line x1="23" y1="1" x2="1" y2="23"><line x1="1" y1="1" x2="23" y2="23"></line></line></svg>"`;
+exports[`copies placeholder element attributes to <svg> tag 2`] = `"<svg xmlns="http://www.w3.org/2000/svg" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 24 24" width="24" id="test" class="foo bar"><line x1="23" y1="1" x2="1" y2="23"></line><line x1="1" y1="1" x2="23" y2="23"></line></svg>"`;
 
 exports[`replaces [data-kimaris] elements with SVG markup 1`] = `"<i data-kimaris="icon1"></i><span data-kimaris="icon2"></span>"`;
 
-exports[`replaces [data-kimaris] elements with SVG markup 2`] = `"<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="23" y1="1" x2="1" y2="23"><line x1="1" y1="1" x2="23" y2="23"></line></line></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="11"></circle></svg>"`;
+exports[`replaces [data-kimaris] elements with SVG markup 2`] = `"<svg xmlns="http://www.w3.org/2000/svg" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><line x1="23" y1="1" x2="1" y2="23"></line><line x1="1" y1="1" x2="23" y2="23"></line></svg><svg xmlns="http://www.w3.org/2000/svg" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="11"></circle></svg>"`;

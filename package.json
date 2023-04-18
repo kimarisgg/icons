@@ -27,6 +27,7 @@
         "build-icons": "node build/process-icons.js",
         "preview": "vite preview",
         "test": "jest",
+        "test:updateSnapshots": "jest --updateSnapshot",
         "test:coverage": "jest --coverage",
         "prepare": "husky install",
         "lint": "eslint \"src/**/*.ts\"",
